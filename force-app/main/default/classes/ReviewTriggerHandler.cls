@@ -4,31 +4,31 @@ public with sharing class ReviewTriggerHandler {
         Set<Id> productIds = new Set<Id>();
 
         if(Trigger.isInsert){
-            for(Review__c review : Trigger.new){
-                if(review.Status__c == 'Aprovado'){
-                    productIds.add(review.Product__c);
+            for(SObject review : Trigger.new){
+                if((String)review.get('Status__c') == 'Aprovado'){
+                    productIds.add((Id)review.get('Product__c'));
                 }
             }
         }
         if(Trigger.isUpdate){
-            for(Review__c review : Trigger.new){
-                Review__c oldReview = Trigger.oldMap.get(review.Id);
-                if(review.Status__c != oldReview.Status__c || review.Rating__c != oldReview.Rating__c){
-                    productIds.add(review.Product__c);
+            for(SObject review : Trigger.new){
+                SObject oldReview = Trigger.oldMap.get(review.Id);
+                if(oldReview != null && ((String)review.get('Status__c') != (String)oldReview.get('Status__c') || review.get('Rating__c') != oldReview.get('Rating__c'))){
+                    productIds.add((Id)review.get('Product__c'));
                 }
             }
         }
         if(Trigger.isDelete){
-            for(Review__c review : Trigger.old){
-                if(review.Status__c == 'Aprovado'){
-                    productIds.add(review.Product__c);
+            for(SObject review : Trigger.old){
+                if((String)review.get('Status__c') == 'Aprovado'){
+                    productIds.add((Id)review.get('Product__c'));
                 }
             }
         }
         if(Trigger.isUndelete){
-            for(Review__c review : Trigger.new){
-                if(review.Status__c == 'Aprovado'){
-                    productIds.add(review.Product__c);
+            for(SObject review : Trigger.new){
+                if((String)review.get('Status__c') == 'Aprovado'){
+                    productIds.add((Id)review.get('Product__c'));
                 }
             }
         }
