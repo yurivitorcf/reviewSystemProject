@@ -33,7 +33,7 @@ public with sharing class ReviewTriggerHandler {
             }
         }
         if(!productIds.isEmpty()){
-            //ainda para completar
+            ReviewTriggerHelper.updateProductRatings(productIds);
         }
     }
 }
