@@ -1,0 +1,62 @@
+:host {
+    display: block;
+}
+
+:host .slds-card__header {
+    justify-content: center;
+}
+
+.main-box {
+    text-align: center;
+}
+
+.metric-box {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.metric-label {
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+    color: #444;
+}
+
+.stars-box {
+    margin: 1rem 0;
+}
+
+.star {
+    font-size: 2.4rem;
+    cursor: pointer;
+    color: #ccc;
+    margin: 0 4px;
+    transition: 0.2s;
+}
+
+.star.selected {
+    color: gold;
+}
+
+.button-box {
+    margin-top: 1rem;
+}
+
+.reviews-box {
+    background: #f7f7f7;
+    border-radius: 6px;
+    padding: 1rem;
+}
+
+.review-item {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+.metric-value {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #2a7ae2;
+    margin-top: 0.2rem;
+}

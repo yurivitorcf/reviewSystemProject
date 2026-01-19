@@ -1,0 +1,49 @@
+<template>
+    <lightning-card title="Avaliações do Produto">
+        <div class="main-box slds-p-around_medium">
+
+            <!-- Média e total -->
+            <div class="metric-box">
+                <div class="metric">
+                    <p class="metric-label">Média de Avaliações</p>
+                    <p class="metric-value">{averageRating}</p>
+                </div>
+                <div class="metric">
+                    <p class="metric-label">Total de Avaliações</p>
+                    <p class="metric-value">{totalReviews}</p>
+                </div>
+            </div>
+
+            <!-- Estrelas interativas -->
+            <div class="stars-box">
+                <template for:each={stars} for:item="star">
+                    <span key={star.value}
+                          class={star.class}
+                          data-value={star.value}
+                          onclick={handleStarClick}>
+                        ★
+                    </span>
+                </template>
+            </div>
+
+            <!-- Botão centralizado -->
+            <div class="button-box">
+                <lightning-button label="Enviar Avaliação" variant="brand" onclick={submitRating}></lightning-button>
+            </div>
+
+        </div>
+
+        <hr/>
+
+        <!-- Lista de reviews -->
+        <template if:true={wiredReviews.data}>
+            <div class="reviews-box slds-p-around_medium">
+                <template for:each={wiredReviews.data} for:item="rev">
+                    <p key={rev.Id} class="review-item">
+                        ⭐ {rev.Rating__c} — {rev.Comment__c}
+                    </p>
+                </template>
+            </div>
+        </template>
+    </lightning-card>
+</template>
